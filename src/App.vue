@@ -7,13 +7,28 @@
 
 <script>
 import Welcome from "./components/Welcome.vue";
+//import Login from "./components/Login.vue";
+
+import Vue from "vue";
+// import router from "./router";
+// import store from ".store";
+//Import and use axios
+import Axios from "axios";
+
+      Vue.prototype.$http = Axios;
+      const token = localStorage.getItem('token')
+      if (token) {
+        Vue.prototype.$http.defaults.headers.common['Authorization'] = token
+      }
 
 export default {
   name: "App",
   components: {
-    Welcome
+    Welcome,
+    // Login
   }
-};
+    };
+
 </script>
 
 <style>
